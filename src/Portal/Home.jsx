@@ -2,7 +2,7 @@ import LectureList from "./lectures/views/LectureList";
 import StudentList from "./students/views/StudentList";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
 
-function Portal() {
+function Home() {
   return (
     <Tabs
       size="md"
@@ -29,4 +29,4 @@ function Portal() {
   );
 }
 
-export default Portal;
+export default Home;

@@ -1,6 +1,7 @@
 import { Tr, Td, Button } from "@chakra-ui/react";
 import axios from "axios";
 import EditLectureModal from "../../../components/lecture/EditLectureModal";
+import LectureEnrollmentModal from "../../../components/lecture/LectureEnrollmentModal";
 
 function Lecture(lecture) {
 
@@ -11,6 +12,7 @@ function Lecture(lecture) {
         console.log(response);
       });
   }
+
   return (
     <Tr>
       <Td>{lecture.lecture.lectureId}</Td>
@@ -18,6 +20,7 @@ function Lecture(lecture) {
       <Td>{lecture.lecture.lectureName}</Td>
       <Td>
         <EditLectureModal lecture={lecture.lecture} />
+        <LectureEnrollmentModal lecture={lecture.lecture} />
         <Button colorScheme="red" onClick={handleDelete}>Delete</Button>
       </Td>
     </Tr>
