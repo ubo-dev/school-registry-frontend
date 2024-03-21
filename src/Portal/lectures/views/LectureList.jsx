@@ -21,7 +21,7 @@ function LectureList() {
       setLectures(response.data);
       setLoading(false);
     });
-  }, []);
+  }, [lectures]);
   return (
     <TableContainer className="list">
       <Table size="m">

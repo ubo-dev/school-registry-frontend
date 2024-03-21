@@ -22,24 +22,25 @@ function CreateStudentModal() {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
-  const [user, setUser] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
 
-  function handleSubmit (e) {
-    e.preventDefault();
-    console.log(user);
-    setUser({
-      firstName: initialRef.current.value,
-      lastName: finalRef.current.value
-    });
 
-    axios.post("http://localhost:8080/api/students/createStudent", user).then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        onClose();
-      }
-    });
+  async function handleCreateStudent() {
+    await axios
+      .post("http://localhost:8080/api/students/createStudent", {
+        firstName: firstName,
+        lastName: lastName,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          onClose();
+          setFirstName("");
+          setLastName("");
+        }
+      });
   }
-
 
   return (
     <>
@@ -58,17 +59,27 @@ function CreateStudentModal() {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>First name</FormLabel>
-              <Input ref={initialRef} placeholder="First name"/>
+              <Input
+                ref={initialRef}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First name"
+              />
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Last name</FormLabel>
-              <Input ref={finalRef} placeholder="Last name" />
+              <Input
+                ref={finalRef}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Last name"
+              />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
+            <Button colorScheme="blue" mr={3} onClick={handleCreateStudent}>
               Save
             </Button>
             <Button onClick={onClose}>Cancel</Button>

@@ -11,6 +11,7 @@ import Student from "./Student";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import CreateStudentModal from "../../../components/CreateStudentModal";
 
 function StudentList() {
   const [loading, setLoading] = useState(true);
@@ -21,9 +22,10 @@ function StudentList() {
       setStudents(response.data);
       setLoading(false);
     });
-  }, []);
+  }, [students]);
   return (
     <TableContainer className="list">
+      <CreateStudentModal className="modal"></CreateStudentModal>
       <Table size="m">
         <Thead>
           <Tr>

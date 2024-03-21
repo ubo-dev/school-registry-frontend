@@ -1,6 +1,15 @@
 import { Tr, Td, Button } from "@chakra-ui/react";
+import axios from "axios";
 
 function Student(student) {
+
+  function handleDelete() {
+    axios
+      .delete("http://localhost:8080/api/students/deleteStudent/" + student.student.studentId)
+      .then((response) => {
+        console.log(response);
+      });
+  }
   return (
     <Tr>
       <Td>{student.student.studentId}</Td>
@@ -8,7 +17,7 @@ function Student(student) {
       <Td>{student.student.lastName}</Td>
       <Td>
         <Button colorScheme="teal">Edit</Button>
-        <Button colorScheme="red">Delete</Button>
+        <Button colorScheme="red" onClick={handleDelete}>Delete</Button>
       </Td>
     </Tr>
   );
