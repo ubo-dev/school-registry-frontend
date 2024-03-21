@@ -23,6 +23,9 @@ function LectureList() {
       setLoading(false);
     });
   }, []);
+
+
+    
   return (
     <TableContainer className="list">
       <CreateLectureModal className="modal"></CreateLectureModal>

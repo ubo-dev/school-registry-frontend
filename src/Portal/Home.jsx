@@ -1,6 +1,7 @@
 import LectureList from "./lectures/views/LectureList";
 import StudentList from "./students/views/StudentList";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
+import Report from "../Report/Report";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <TabList>
         <Tab>Students</Tab>
         <Tab>Lectures</Tab>
+        <Tab>Reports</Tab>
       </TabList>
       <TabPanels>
         {/* initially mounted */}
@@ -23,6 +25,10 @@ function Home() {
         {/* initially not mounted */}
         <TabPanel>
           <LectureList />
+        </TabPanel>
+        {/* initially not mounted */}
+        <TabPanel>
+          <Report />
         </TabPanel>
       </TabPanels>
     </Tabs>

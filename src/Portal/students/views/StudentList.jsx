@@ -18,14 +18,27 @@ function StudentList() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/students/getAll").then((response) => {
-      setStudents(response.data);
-      setLoading(false);
-    });
+    fetchStudents();
   }, []);
+
+  async function fetchStudents() {
+    await axios
+      .get("http://localhost:8080/api/students/getAll")
+      .then((response) => {
+        setStudents(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
   return (
     <TableContainer className="list">
-      <CreateStudentModal className="modal"></CreateStudentModal>
+      <CreateStudentModal className="modal" setStudents={setStudents}></CreateStudentModal>
       <Table size="m">
         <Thead>
           <Tr>
@@ -46,7 +59,7 @@ function StudentList() {
             </Tr>
           ) : (
             students.map((student) => (
-              <Student key={student.studentId} student={student} />
+              <Student key={student.studentId} student={student} setStudents={setStudents} />
             ))
           )}
         </Tbody>

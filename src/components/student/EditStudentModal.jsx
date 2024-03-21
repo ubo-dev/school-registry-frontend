@@ -15,7 +15,7 @@ import {
   import { useState } from "react";
   import axios from "axios";
   
-  function EditStudentModal(student) {
+  function EditStudentModal(student, {setStudents}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
   
     const [firstName, setFirstName] = useState("");
@@ -34,6 +34,7 @@ import {
             onClose();
             setFirstName("");
             setLastName("");
+            setStudents((prevStudents) => [...prevStudents, response.data]);
           }
         });
     }

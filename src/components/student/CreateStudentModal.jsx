@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Button,
   Modal,
@@ -15,7 +16,7 @@ import {
 import { useState } from "react";
 import axios from "axios";
 
-function CreateStudentModal() {
+function CreateStudentModal({setStudents}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [firstName, setFirstName] = useState("");
@@ -34,6 +35,7 @@ function CreateStudentModal() {
           onClose();
           setFirstName("");
           setLastName("");
+          setStudents((prevStudents) => [...prevStudents, response.data]);
         }
       });
   }
