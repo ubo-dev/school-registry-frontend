@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import Lecture from "./Lecture";
+import CreateLectureModal from "../../../components/lecture/CreateLectureModal";
 
 function LectureList() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ function LectureList() {
   }, [lectures]);
   return (
     <TableContainer className="list">
+      <CreateLectureModal className="modal"></CreateLectureModal>
       <Table size="m">
         <Thead>
           <Tr>

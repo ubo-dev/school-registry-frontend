@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Button,
   Modal,
@@ -13,20 +12,36 @@ import {
   Input,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useState } from "react";
+import axios from "axios";
 
 function CreateLectureModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
+  const [lectureCode, setLectureCode] = useState("");
+  const [lectureName, setLectureName] = useState("");
+
+  async function handleCreateLecture() {
+    await axios
+      .post("http://localhost:8080/api/lectures/createLecture", {
+        lectureCode: lectureCode,
+        lectureName: lectureName,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          onClose();
+          setLectureCode("");
+          setLectureName("");
+        }
+      });
+  }
 
   return (
     <>
       <Button onClick={onOpen}>Create Lecture</Button>
 
       <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
       >
@@ -37,17 +52,23 @@ function CreateLectureModal() {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Lecture code</FormLabel>
-              <Input ref={initialRef} placeholder="Lecture code" />
+              <Input
+                onChange={(e) => setLectureCode(e.target.value)}
+                placeholder="Lecture code"
+              />
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Lecture name</FormLabel>
-              <Input placeholder="Lecture name" />
+              <Input
+                placeholder="Lecture name"
+                onChange={(e) => setLectureName(e.target.value)}
+              />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
+            <Button colorScheme="blue" mr={3} onClick={handleCreateLecture}>
               Save
             </Button>
             <Button onClick={onClose}>Cancel</Button>

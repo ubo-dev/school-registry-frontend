@@ -1,5 +1,6 @@
 import { Tr, Td, Button } from "@chakra-ui/react";
 import axios from "axios";
+import EditLectureModal from "../../../components/lecture/EditLectureModal";
 
 function Lecture(lecture) {
 
@@ -16,7 +17,7 @@ function Lecture(lecture) {
       <Td>{lecture.lecture.lectureCode}</Td>
       <Td>{lecture.lecture.lectureName}</Td>
       <Td>
-        <Button colorScheme="teal">Edit</Button>
+        <EditLectureModal lecture={lecture.lecture} />
         <Button colorScheme="red" onClick={handleDelete}>Delete</Button>
       </Td>
     </Tr>

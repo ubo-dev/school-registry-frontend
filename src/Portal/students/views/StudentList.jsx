@@ -11,7 +11,7 @@ import Student from "./Student";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import CreateStudentModal from "../../../components/CreateStudentModal";
+import CreateStudentModal from "../../../components/student/CreateStudentModal";
 
 function StudentList() {
   const [loading, setLoading] = useState(true);

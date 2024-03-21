@@ -1,5 +1,6 @@
 import { Tr, Td, Button } from "@chakra-ui/react";
 import axios from "axios";
+import EditStudentModal from "../../../components/student/EditStudentModal";
 
 function Student(student) {
 
@@ -16,7 +17,7 @@ function Student(student) {
       <Td>{student.student.firstName}</Td>
       <Td>{student.student.lastName}</Td>
       <Td>
-        <Button colorScheme="teal">Edit</Button>
+        <EditStudentModal student={student.student} />
         <Button colorScheme="red" onClick={handleDelete}>Delete</Button>
       </Td>
     </Tr>

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Button,
   Modal,
@@ -19,11 +18,8 @@ import axios from "axios";
 function CreateStudentModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
-
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
 
   async function handleCreateStudent() {
@@ -47,8 +43,6 @@ function CreateStudentModal() {
       <Button onClick={onOpen}>Create Student</Button>
 
       <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
       >
@@ -60,7 +54,6 @@ function CreateStudentModal() {
             <FormControl>
               <FormLabel>First name</FormLabel>
               <Input
-                ref={initialRef}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 placeholder="First name"
@@ -70,7 +63,6 @@ function CreateStudentModal() {
             <FormControl mt={4}>
               <FormLabel>Last name</FormLabel>
               <Input
-                ref={finalRef}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder="Last name"

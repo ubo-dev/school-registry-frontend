@@ -7,7 +7,7 @@ function Portal() {
     <Tabs
       size="md"
       variant="soft-rounded"
-      colorScheme="green"
+      colorScheme="blue"
       isLazy
       className="tabs"
     >
