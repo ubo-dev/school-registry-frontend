@@ -16,21 +16,28 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 
-function LectureEnrollmentModal() {
+function LectureEnrollmentModal(lecture) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [students, setStudents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedStudent, setSelectedStudent] = useState("");
 
   async function handleAssignStudent() {
-    console.log("Student assigned to lecture");
+    console.log(selectedStudent)
+    await axios.put(
+      `http://localhost:8080/api/lectures/assignStudent/${selectedStudent}/to/${lecture.lecture.lectureId}`).then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          onClose();
+        }
+      });
   }
 
   useEffect(() => {
-      axios
-        .get("http://localhost:8080/api/students/getAll")
-        .then((response) => {
-          console.log(response);
-          setStudents(response.data);
-        });
+    axios.get("http://localhost:8080/api/students/getAll").then((response) => {
+      setStudents(response.data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
@@ -47,12 +54,17 @@ function LectureEnrollmentModal() {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Lecture code</FormLabel>
-              <Select placeholder="Select option">
-                {students.map((student) => (
-                  <option key={student.studentId} value={student.studentId}>
-                    {student.firstName} {student.lastName}
-                  </option>
-                ))}
+              <Select
+                placeholder="Select option"
+                onChange={(e) => setSelectedStudent(e.target.value)}
+              >
+                {!isLoading
+                  ? students.map((student) => (
+                      <option key={student.studentId} value={student.studentId}>
+                        {student.firstName} {student.lastName}
+                      </option>
+                    ))
+                  : "Loading..."}
               </Select>
             </FormControl>
           </ModalBody>

@@ -22,7 +22,7 @@ function StudentList() {
       setStudents(response.data);
       setLoading(false);
     });
-  }, [students]);
+  }, []);
   return (
     <TableContainer className="list">
       <CreateStudentModal className="modal"></CreateStudentModal>

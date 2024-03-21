@@ -22,7 +22,7 @@ function LectureList() {
       setLectures(response.data);
       setLoading(false);
     });
-  }, [lectures]);
+  }, []);
   return (
     <TableContainer className="list">
       <CreateLectureModal className="modal"></CreateLectureModal>
