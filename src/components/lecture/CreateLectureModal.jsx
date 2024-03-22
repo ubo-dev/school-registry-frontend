@@ -23,7 +23,7 @@ function CreateLectureModal() {
 
   async function handleCreateLecture() {
     await axios
-      .post("http://localhost:8080/api/lectures/createLecture", {
+      .post("http://localhost:6060/api/lectures/createLecture", {
         lectureCode: lectureCode,
         lectureName: lectureName,
       })

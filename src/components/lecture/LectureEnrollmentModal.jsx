@@ -25,7 +25,7 @@ function LectureEnrollmentModal(lecture) {
   async function handleAssignStudent() {
     console.log(selectedStudent)
     await axios.put(
-      `http://localhost:8080/api/lectures/assignStudent/${selectedStudent}/to/${lecture.lecture.lectureId}`).then((response) => {
+      `http://localhost:6060/api/lectures/assignStudent/${selectedStudent}/to/${lecture.lecture.lectureId}`).then((response) => {
         console.log(response);
         if (response.status === 200) {
           onClose();
@@ -34,7 +34,7 @@ function LectureEnrollmentModal(lecture) {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/students/getAll").then((response) => {
+    axios.get("http://localhost:6060/api/students/getAll").then((response) => {
       setStudents(response.data);
       setIsLoading(false);
     });

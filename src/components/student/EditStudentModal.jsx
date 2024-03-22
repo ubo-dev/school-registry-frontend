@@ -24,7 +24,7 @@ import {
     async function handleUpdateLecture() {
       console.log(student);
       await axios
-        .put(`http://localhost:8080/api/students/updateStudent/${student.student.studentId}`, {
+        .put(`http://localhost:6060/api/students/updateStudent/${student.student.studentId}`, {
           firstName: firstName,
           lastName: lastName,
         })

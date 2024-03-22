@@ -31,7 +31,7 @@ function LectureModal() {
     console.log(selectedStudent);
     await axios
       .get(
-        `http://localhost:8080/api/reports/getLecturesByStudent/${selectedStudent}`
+        `http://localhost:6060/api/reports/getLecturesByStudent/${selectedStudent}`
       )
       .then((response) => {
         console.log(response);
@@ -50,7 +50,7 @@ function LectureModal() {
 
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/students/getAll").then((response) => {
+    axios.get("http://localhost:6060/api/students/getAll").then((response) => {
       setStudents(response.data);
       setIsLoading(false);
     });

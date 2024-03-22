@@ -24,7 +24,7 @@ function UpdateLectureModal(lecture) {
   async function handleUpdateLecture() {
     console.log(lecture);
     await axios
-      .put(`http://localhost:8080/api/lectures/updateLecture/${lecture.lecture.lectureId}`, {
+      .put(`http://localhost:6060/api/lectures/updateLecture/${lecture.lecture.lectureId}`, {
         lectureCode: lectureCode,
         lectureName: lectureName,
       })

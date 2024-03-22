@@ -6,7 +6,7 @@ function Student(student, {setStudents} ) {
 
   function handleDelete() {
     axios
-      .delete("http://localhost:8080/api/students/deleteStudent/" + student.student.studentId)
+      .delete("http://localhost:6060/api/students/deleteStudent/" + student.student.studentId)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

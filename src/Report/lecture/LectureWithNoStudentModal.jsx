@@ -20,9 +20,8 @@ function LectureWithNoStudentModal() {
 
   const handleFetch = () => {
     axios
-      .get("http://localhost:8080/api/reports/getLecturesWithNoStudents")
+      .get("http://localhost:6060/api/reports/getLecturesWithNoStudents")
       .then((response) => {
-        console.log(response.data);
         setLectures(response.data);
       })
       .catch((error) => console.log(error));

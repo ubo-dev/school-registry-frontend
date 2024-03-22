@@ -18,7 +18,7 @@ function LectureList() {
   const [lectures, setLectures] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/lectures/getAll").then((response) => {
+    axios.get("http://localhost:6060/api/lectures/getAll").then((response) => {
       setLectures(response.data);
       setLoading(false);
     });

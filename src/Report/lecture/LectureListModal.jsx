@@ -27,7 +27,7 @@ function LectureListModal(lectures, isActive) {
             <FormControl>
               <FormLabel>Lectures:</FormLabel>
               {lectures.lectures.map((lecture) => (
-                <li key={lecture.studentId}>
+                <li key={lecture.lectureId}>
                   {lecture.lectureName}
                 </li>
               ))}

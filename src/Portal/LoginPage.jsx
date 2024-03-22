@@ -31,7 +31,7 @@ function LoginPage() {
   async function handleLogin() {
     console.log(email, password);
     await axios
-      .post("http://localhost:8080/api/auth/login", {
+      .post("http://localhost:6060/api/auth/login", {
         email: email,
         password: password,
       })

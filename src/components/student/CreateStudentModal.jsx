@@ -25,7 +25,7 @@ function CreateStudentModal({setStudents}) {
 
   async function handleCreateStudent() {
     await axios
-      .post("http://localhost:8080/api/students/createStudent", {
+      .post("http://localhost:6060/api/students/createStudent", {
         firstName: firstName,
         lastName: lastName,
       })

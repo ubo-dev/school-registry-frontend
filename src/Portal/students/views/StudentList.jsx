@@ -23,7 +23,7 @@ function StudentList() {
 
   async function fetchStudents() {
     await axios
-      .get("http://localhost:8080/api/students/getAll")
+      .get("http://localhost:6060/api/students/getAll")
       .then((response) => {
         setStudents(response.data);
         setLoading(false);

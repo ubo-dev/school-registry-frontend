@@ -7,7 +7,7 @@ function Lecture(lecture) {
 
   function handleDelete() {
     axios
-      .delete("http://localhost:8080/api/lectures/deleteLecture/" + lecture.lecture.lectureId)
+      .delete("http://localhost:6060/api/lectures/deleteLecture/" + lecture.lecture.lectureId)
       .then((response) => {
         console.log(response);
       });
